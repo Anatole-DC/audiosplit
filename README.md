@@ -78,7 +78,7 @@ make test-install
 
 ### Working on the project
 
-See [this document on contribution guidelines](/documentation/contributing.md).
+See [this document on contribution guidelines](/CONTRIBUTING).
 
 See [this document on coding best practices](/documentation/best_practices.md) and [this document on git and github workflow](/documentation/git_github_workflow.md) to see what is an ideal workflow for this project.
 
