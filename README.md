@@ -1,10 +1,10 @@
-<h1 align="center">DATASCIENCE PROJECT TEMPLATE</h1>
+<h1 align="center">AUDIO SPLIT</h1>
 
-_<h4 align="center">A starter template for datascience projects (by [Anatole-DC](https://github.com/Anatole-DC))</h4>_
+_<h4 align="center">Extract indivudal instruments from an audio file.</h4>_
 
 This project describes what could be considered a good starting architecture for datascience projects. This project aims at providing a clean directory organization to anticipate future refactoring headaches.
 
-Most important points of this template :
+Most important points of this project's structure :
 - Using [pyproject.toml](pyproject.toml) instead of requirements.txt
 - Splitting package into smaller modules (see [project's documentation](/documentation/README.md))
 - Training [models into sub apps](/apps/models/README.md)
@@ -21,7 +21,6 @@ Most important points of this template :
   - [Setup](#setup)
   - [Working on the project](#working-on-the-project)
 - [Project structure](#project-structure)
-- [Getting further](#getting-further)
 - [Raising issues](#raising-issues)
 
 ## Getting Started
@@ -129,10 +128,6 @@ ds_project_template/
 └── scripts
     └── README.md
 ```
-
-## Getting further
-
-If you are interested in a more complete set of tools, see [this repository](https://github.com/Anatole-DC/template_python).
 
 ## Raising issues
 

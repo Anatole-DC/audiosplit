@@ -1,4 +1,4 @@
-from package import hello_world
+from audiosplit import hello_world
 
 
 def main():

@@ -1,13 +1,13 @@
 pyenv-setup:
 	pyenv install 3.10.6
-	pyenv virtualenv 3.10.6 ds_demo_package
-	pyenv local ds_demo_package
+	pyenv virtualenv 3.10.6 audiosplit
+	pyenv local audiosplit
 
 env-setup:
 	cp .env.template .env
 
 activate:
-	pyenv activate ds_demo_package
+	pyenv activate audiosplit
 
 install:
 	make activate

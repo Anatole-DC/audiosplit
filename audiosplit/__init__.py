@@ -2,7 +2,7 @@
 Direct imports for the package library.
 """
 
-from package.config.environment import USER_NAME, DATA_DIRECTORY
+from audiosplit.config.environment import USER_NAME, DATA_DIRECTORY
 
 
 def hello_world(name: str) -> str:

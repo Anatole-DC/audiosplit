@@ -3,18 +3,20 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "package"
-version = "1.0.0"
+name = "audiosplit"
+version = "0.0.1"
 authors = [
     {name = "Anatole-DC", email = "adechauveron@gmail.com"}
 ]
 readme = "README.md"
 requires-python=">=3.10.6"
-description = "A starter template for datascience projects."
+description = "Extract indivudal instruments from an audio file."
 keywords = [
-    "starter",
-    "template",
-    "datascience"
+    "machine-learning",
+    "deep-learning",
+    "datascience",
+    "music",
+    "MIDI",
 ]
 
 dependencies = [
