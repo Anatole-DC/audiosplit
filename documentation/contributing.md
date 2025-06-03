@@ -5,6 +5,7 @@ This document describes the guidelines for contributing to the project. Refer to
 - [Contribution guideline](#contribution-guideline)
   - [Adding code to the repository](#adding-code-to-the-repository)
   - [Dependencies](#dependencies)
+  - [Adding features](#adding-features)
 
 ## Adding code to the repository
 
@@ -27,3 +28,11 @@ Dependencies are added to the [pyproject.toml file](/pyproject.toml). When addin
 If this is a production dependency, add it to the [dependencies list](/pyproject.toml#L22). Else, it can either be a [dev dependency](/pyproject.toml#L29), a [test dependency](/pyproject.toml#L33), or a custom group.  
 To create a custom group, look at [pyproject.toml group system](https://packaging.python.org/en/latest/specifications/dependency-groups/).
 
+## Adding features
+
+Features are added from issues on the [github project](https://github.com/users/Anatole-DC/projects/14). The workflow is :
+1. Create or take an issue on the dashboard
+2. Create a branch from the issue
+3. Create and merge the pull request from your branch once your work is done
+
+Look at [this document](/documentation/git_github_workflow.md) to learn more about the git/github workflow.

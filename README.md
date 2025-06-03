@@ -78,9 +78,13 @@ make test-install
 
 ### Working on the project
 
-See [this document on coding best practices](/documentation/best_practices.md) and [this document on git and github workflow](/documentation/git_github_workflow.md) to start developping.
+See [this document on contribution guidelines](/documentation/contributing.md).
+
+See [this document on coding best practices](/documentation/best_practices.md) and [this document on git and github workflow](/documentation/git_github_workflow.md) to see what is an ideal workflow for this project.
 
 **Generate new model**
+
+Since we are bound to create lots of models, use the following utils to create your models.
 
 ```bash
 make new-model MODEL_NAME="model_name"
@@ -89,9 +93,11 @@ make new-model MODEL_NAME="model_name"
 > This will generate a new model inside the [models](/apps/models/) directory, with a `main.py` and a `README.md`.  
 > The `main.py` is generated from [this template file](/assets/templates/model_template.py) so update it for more complete starter models.
 
+Add all the code you need from the package, and use this new file to create your model's architecture, and other required code. If you are implementing a feature multiple time in your models, maybe it can be written once inside the package.
+
 ## Project structure
 
-This project is split into two main parts : the package, and the apps.
+This project is split into two main parts : the [package](#package), and the [apps](#apps).
 
 There are also additional directories that can be used :
 - [assets](assets/README.md) to store images and other documents
