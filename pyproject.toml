@@ -22,7 +22,7 @@ keywords = [
 dependencies = [
     "python-dotenv",    # Handles dotfiles
     "tensorflow",       # Neural networks
-    "sckikit-learn"     # Machine learning
+    "scikit-learn"      # Machine learning
 ]
 
 [project.optional-dependencies]
