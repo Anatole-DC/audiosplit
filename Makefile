@@ -1,6 +1,5 @@
 pyenv-setup:
-	pyenv install 3.10.6
-	pyenv virtualenv 3.10.6 audiosplit
+	pyenv virtualenv 3.12.9 audiosplit
 	pyenv local audiosplit
 
 env-setup:
@@ -10,15 +9,12 @@ activate:
 	pyenv activate audiosplit
 
 install:
-	make activate
 	pip install -e .
 
 dev-install:
-	make activate
 	pip install -e ".[dev]"
 
 test-install:
-	make activate
 	pip install -e ".[test]"
 
 all-install:
