@@ -14,6 +14,9 @@ install:
 dev-install:
 	pip install -e ".[dev]"
 
+jupyter-install:
+	pip install -e ".[jupyter]"
+
 test-install:
 	pip install -e ".[test]"
 
@@ -21,6 +24,7 @@ all-install:
 	make install
 	make dev-install
 	make test-install
+	make jupyter-install
 
 code-clean:
 	black .
