@@ -14,7 +14,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-data/
 lib64/
 parts/
 sdist/
@@ -170,3 +169,4 @@ generated/
 secrets/
 # **/notebook*/
 cache/
+/data/
