@@ -115,7 +115,6 @@ def convert_all_midi_files(
         progress_task = progress.add_task("", total=len(files_to_process))
 
         def audio_conversion_task(file_path: Path):
-            # get the name of the wav file (keeping all the infos from the origin dataset but replacing '/' and '\' by '-')
             wav_file_path = wav_directory / (file_path.stem + ".wav")
 
             # convert the midi file into wav
