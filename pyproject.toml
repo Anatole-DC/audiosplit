@@ -29,7 +29,8 @@ dependencies = [
     "pretty-midi",
     "scipy",
     "matplotlib",
-    "tqdm"
+    "tqdm",
+    "typer[all]"
 ]
 
 [project.optional-dependencies]
@@ -47,7 +48,7 @@ test = [
 ]
 
 [project.scripts]
-package-hello = "package.cli.cli_main:main"
+asplit = "audiosplit.cli.cli_main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
