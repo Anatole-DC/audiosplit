@@ -9,11 +9,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PROJECT_DIRECTORY = Path(environ.get("PROJECT_DIRECTORY"))
+# Data related variables
+DATA_DIRECTORY = Path(environ.get("DATA_DIRECTORY", "data"))
 
-CACHE_DIRECTORY = PROJECT_DIRECTORY / "cache"
+print("DATA_DIRECTORY")
 
-DATA_DIRECTORY = Path(environ.get("DATA_DIR", PROJECT_DIRECTORY / "data"))
-DATA_DIRECTORY.mkdir(exist_ok=True, parents=True)
+RAW_DATA_DIRECTORY = DATA_DIRECTORY / "raw"
+PREPROCESSED_DATA_DIRECTORY = DATA_DIRECTORY / "preprocessed"
 
-USER_NAME = environ.get("USER_NAME")
+# Optimization variables
+NUMBER_OF_THREADS = int(environ.get("NUMBER_OF_THREADS", 10))

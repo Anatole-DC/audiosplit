@@ -10,6 +10,7 @@ import sys
 import os
 from pathlib import Path
 
+
 def main():
     """Main entry point for the application"""
     print("🎵 Welcome to the Lakh MIDI Dataset Explorer!")
@@ -25,11 +26,11 @@ def main():
     print("  [4] View project info")
     print("  [5] Exit")
     print()
-    
+
     while True:
         try:
             choice = input("Enter your choice (1-5): ").strip()
-            
+
             if choice == "1":
                 run_demo()
                 break
@@ -47,18 +48,20 @@ def main():
                 break
             else:
                 print("❌ Invalid choice. Please enter 1-5.")
-                
+
         except KeyboardInterrupt:
             print("\n\n👋 Goodbye!")
             break
         except Exception as e:
             print(f"❌ Error: {e}")
 
+
 def run_demo():
     """Run the interactive demo"""
     print("\n🚀 Starting interactive demo...")
     try:
         import demo
+
         demo.main()
     except ImportError as e:
         print(f"❌ Error importing demo: {e}")
@@ -67,17 +70,19 @@ def run_demo():
     except Exception as e:
         print(f"❌ Error running demo: {e}")
 
+
 def open_notebook():
     """Try to open the Jupyter notebook"""
     print("\n📓 Opening Jupyter notebook...")
-    
+
     notebook_path = Path("lmd_exploration_notebook.ipynb")
     if not notebook_path.exists():
         print("❌ Notebook file not found!")
         return
-    
+
     try:
         import subprocess
+
         subprocess.run(["jupyter", "notebook", str(notebook_path)], check=True)
     except subprocess.CalledProcessError:
         print("❌ Error opening Jupyter notebook")
@@ -88,6 +93,7 @@ def open_notebook():
         print("💡 Install Jupyter:")
         print("   pip install jupyter")
         print("💡 Or open the notebook manually in your preferred environment")
+
 
 def show_quick_start():
     """Show quick start guide"""
@@ -122,8 +128,9 @@ def show_quick_start():
     print("   • Use caching to avoid re-processing")
     print("   • Check the README.md for detailed documentation")
     print()
-    
+
     input("Press Enter to continue...")
+
 
 def show_project_info():
     """Show project information"""
@@ -137,7 +144,7 @@ def show_project_info():
     print()
     print("📊 Dataset Details:")
     print("   • Total MIDI files: 176,581")
-    print("   • Matched files: 45,129") 
+    print("   • Matched files: 45,129")
     print("   • Dataset size: ~3.5GB (full)")
     print("   • Matched subset: ~1.5GB")
     print()
@@ -156,13 +163,13 @@ def show_project_info():
         ("demo.py", "Interactive demonstration"),
         ("requirements.txt", "Python dependencies"),
         ("lmd_exploration_notebook.ipynb", "Jupyter notebook"),
-        ("README.md", "Complete documentation")
+        ("README.md", "Complete documentation"),
     ]
-    
+
     for filename, description in files_info:
         status = "✅" if Path(filename).exists() else "❌"
         print(f"   {status} {filename:<30} - {description}")
-    
+
     print()
     print("🌐 Resources:")
     print("   • Dataset homepage: https://colinraffel.com/projects/lmd/")
@@ -174,23 +181,29 @@ def show_project_info():
     print("   with Applications to Audio-to-MIDI Alignment and Matching'.")
     print("   PhD Thesis, 2016.")
     print()
-    
+
     input("Press Enter to continue...")
+
 
 def check_requirements():
     """Check if required packages are installed"""
     required_packages = [
-        'numpy', 'pandas', 'matplotlib', 'seaborn', 
-        'pretty_midi', 'tqdm', 'requests'
+        "numpy",
+        "pandas",
+        "matplotlib",
+        "seaborn",
+        "pretty_midi",
+        "tqdm",
+        "requests",
     ]
-    
+
     missing_packages = []
     for package in required_packages:
         try:
             __import__(package)
         except ImportError:
             missing_packages.append(package)
-    
+
     if missing_packages:
         print("⚠️  Missing required packages:")
         for package in missing_packages:
@@ -200,27 +213,31 @@ def check_requirements():
         print("   pip install -r requirements.txt")
         print()
         return False
-    
+
     return True
+
 
 def create_directories():
     """Create necessary directories"""
-    directories = ['lmd_data', 'cache']
+    directories = ["lmd_data", "cache"]
     for directory in directories:
         Path(directory).mkdir(exist_ok=True)
+
 
 if __name__ == "__main__":
     # Check if this is being run directly
     print("🔧 Initializing...")
-    
+
     # Create necessary directories
     create_directories()
-    
+
     # Check requirements (optional - don't block execution)
     requirements_ok = check_requirements()
     if not requirements_ok:
-        print("⚠️  Some packages are missing, but you can still explore the project structure.")
+        print(
+            "⚠️  Some packages are missing, but you can still explore the project structure."
+        )
         print()
-    
+
     # Run main menu
     main()
