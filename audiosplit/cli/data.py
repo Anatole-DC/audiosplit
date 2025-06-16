@@ -14,8 +14,8 @@ from audiosplit.config.environment import (
 )
 from audiosplit.data.preprocessing import convert_all_midi_files
 
-data_cli_app = Typer()
 
+data_cli_app = Typer()
 
 DATASET_URLS = {
     "full": "http://hog.ee.columbia.edu/craffel/lmd/lmd_full.tar.gz",
@@ -25,36 +25,47 @@ DATASET_URLS = {
 
 
 class DatasetVersion(str, Enum):
+    """
+    An enum to control the version dataset to download from the website.
+    (Used only in CLI)
+    """
+
     full = "full"
     matched = "matched"
     aligned = "aligned"
 
 
-@data_cli_app.command("download")
+@data_cli_app.command("download", help="Download dataset from the online website.")
 def download_data(
     dataset: Annotated[
         DatasetVersion, Option(help="The version of dataset do you want to download.")
     ] = DatasetVersion.matched,
 ):
-    dataset_url = DATASET_URLS[dataset.value]
-    print(dataset_url)
-    temp_tar_path = RAW_DATA_DIRECTORY.parent / f"{dataset.value}.tar.gz"
+    RAW_DATA_DIRECTORY.mkdir(exist_ok=True, parents=True)
 
-    if temp_tar_path.exists() and not Confirm.ask(f"Archive of the {dataset.value} dataset found. Do you want to use it ?"):
+    dataset_url = DATASET_URLS[dataset.value]
+
+    temp_tar_path = RAW_DATA_DIRECTORY / f"{dataset.value}.tar.gz"
+    use_existing_dataset = temp_tar_path.exists() and Confirm.ask(
+        f"Archive of the {dataset.value} dataset found. Do you want to use it ?"
+    )
+
+    if not temp_tar_path.exists() or not use_existing_dataset:
         with (
             get(dataset_url, stream=True) as request_response,
             Progress(
                 TextColumn("Downloading dataset"),
                 BarColumn(),
-                TextColumn("{task.completed}/{task.total}")
+                TextColumn("{task.completed}/{task.total}"),
             ) as download_progress,
-            open(temp_tar_path, "wb") as tar_download
+            open(temp_tar_path, "wb") as tar_download,
         ):
             download_task = download_progress.add_task(
                 "", total=int(request_response.headers["Content-Length"])
             )
             for chunk in request_response.iter_content(chunk_size=1024):
-                if not chunk: continue
+                if not chunk:
+                    continue
                 tar_download.write(chunk)
                 download_progress.update(download_task, advance=len(chunk))
 
@@ -62,19 +73,19 @@ def download_data(
         Progress(
             TextColumn("Extracting dataset"),
             BarColumn(),
-            TextColumn("{task.completed}/{task.total}")
+            TextColumn("{task.completed}/{task.total}"),
         ) as extract_progress,
-        tar_open(temp_tar_path, mode="r:gz") as tarfile
+        tar_open(temp_tar_path, mode="r:gz") as tarfile,
     ):
         tarfile_members = tarfile.getmembers()
         extract_task = extract_progress.add_task("", total=len(tarfile_members))
 
         for member in tarfile_members:
-            tarfile.extract(member=member, path=RAW_DATA_DIRECTORY.parent, numeric_owner=True)
+            tarfile.extract(member=member, path=RAW_DATA_DIRECTORY, numeric_owner=True)
             extract_progress.update(extract_task, advance=1)
 
 
-@data_cli_app.command("convert")
+@data_cli_app.command("convert", help="Convert midi files into wav files.")
 def convert_raw_data(
     input: Annotated[
         Path, Option(help="The input path of the music data")

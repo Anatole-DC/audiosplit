@@ -1,5 +1,7 @@
 """
 Package's CLI entry point.
+
+When adding new commands, please update the cli's README as well.
 """
 
 from typer import Typer

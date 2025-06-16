@@ -10,11 +10,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Data related variables
-
 DATA_DIRECTORY = Path(environ.get("DATA_DIRECTORY"), "data")
-RAW_DATA_DIRECTORY = DATA_DIRECTORY / "raw" / "lmd_matched"
+RAW_DATA_DIRECTORY = DATA_DIRECTORY / "raw"
 PREPROCESSED_DATA_DIRECTORY = DATA_DIRECTORY / "raw" / "preprocessed"
 
 # Optimization variables
-
-NUMBER_OF_THREADS = 15
+NUMBER_OF_THREADS = int(environ.get("NUMBER_OF_THREADS"), 10)
