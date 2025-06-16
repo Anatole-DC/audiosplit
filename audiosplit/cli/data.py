@@ -9,10 +9,15 @@ from audiosplit.config.environment import (
     PREPROCESSED_DATA_DIRECTORY,
 )
 from audiosplit.data.preprocessing import convert_all_midi_files
-from audiosplit.data.dataset import DatasetVersion, download_dataset, extract_downloaded_dataset
+from audiosplit.data.dataset import (
+    DatasetVersion,
+    download_dataset,
+    extract_downloaded_dataset,
+)
 
 
 data_cli_app = Typer()
+
 
 @data_cli_app.command("download", help="Download dataset from the online website.")
 def download_data(
@@ -28,7 +33,9 @@ def download_data(
         f"Archive of the {dataset.value} dataset found. Do you want to use it ?"
     )
     if not temp_tar_path.exists() or not use_existing_dataset:
-        assert download_dataset(dataset, temp_tar_path).exists(), f"Could not retrieve dataset at path '{temp_tar_path.absolute()}' after download."
+        assert download_dataset(
+            dataset, temp_tar_path
+        ).exists(), f"Could not retrieve dataset at path '{temp_tar_path.absolute()}' after download."
 
     extract_downloaded_dataset(temp_tar_path, RAW_DATA_DIRECTORY)
 

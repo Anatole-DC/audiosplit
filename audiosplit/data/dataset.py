@@ -25,7 +25,9 @@ class DatasetVersion(str, Enum):
 
 
 def download_dataset(dataset_version: DatasetVersion, download_path: Path) -> Path:
-    assert download_path.parent.exists(), f"Provided download path does not exist ({download_path.parent.absolute()})"
+    assert (
+        download_path.parent.exists()
+    ), f"Provided download path does not exist ({download_path.parent.absolute()})"
 
     dataset_url = DATASET_URLS[dataset_version.value]
 
@@ -47,12 +49,17 @@ def download_dataset(dataset_version: DatasetVersion, download_path: Path) -> Pa
             tar_download.write(chunk)
             download_progress.update(download_task, advance=len(chunk))
 
-    assert download_path.exists(), f"Could not retrieve dataset at path '{download_path.absolute()}' after download. Url  used was '{dataset_url}'."
+    assert (
+        download_path.exists()
+    ), f"Could not retrieve dataset at path '{download_path.absolute()}' after download. Url  used was '{dataset_url}'."
 
     return download_path
 
+
 def extract_downloaded_dataset(download_path: Path, extract_path: Path):
-    assert download_path.exists(), f"Provided download path '{download_path.absolute()}' does not exist."
+    assert (
+        download_path.exists()
+    ), f"Provided download path '{download_path.absolute()}' does not exist."
 
     with (
         Progress(

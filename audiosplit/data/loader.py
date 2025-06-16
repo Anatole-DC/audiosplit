@@ -6,7 +6,10 @@ from pathlib import Path
 from typing import List
 from random import sample
 
-from audiosplit.config.environment import PREPROCESSED_DATA_DIRECTORY, RAW_DATA_DIRECTORY
+from audiosplit.config.environment import (
+    PREPROCESSED_DATA_DIRECTORY,
+    RAW_DATA_DIRECTORY,
+)
 
 
 def load_preprocessed_music_paths(number_of_samples: int = None) -> List[Path]:
@@ -17,7 +20,9 @@ def load_preprocessed_music_paths(number_of_samples: int = None) -> List[Path]:
         PREPROCESSED_DATA_DIRECTORY.is_dir()
     ), f"Preprocessed directory path exists but is not a directory. Value given is {PREPROCESSED_DATA_DIRECTORY.absolute()}"
 
-    preprocessed_audio_file_paths: List[Path] = list(PREPROCESSED_DATA_DIRECTORY.glob("*.wav"))
+    preprocessed_audio_file_paths: List[Path] = list(
+        PREPROCESSED_DATA_DIRECTORY.glob("*.wav")
+    )
 
     if number_of_samples is None:
         return preprocessed_audio_file_paths
