@@ -39,6 +39,9 @@ jupyter  = [
     "notebook",
     "jupyter-book"
 ]
+interface = [
+    "streamlit",
+]
 dev = [
     "black",            # Code format
     "flake8"            # Code linter

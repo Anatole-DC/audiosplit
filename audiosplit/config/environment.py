@@ -12,8 +12,6 @@ load_dotenv()
 # Data related variables
 DATA_DIRECTORY = Path(environ.get("DATA_DIRECTORY", "data"))
 
-print("DATA_DIRECTORY")
-
 RAW_DATA_DIRECTORY = DATA_DIRECTORY / "raw"
 PREPROCESSED_DATA_DIRECTORY = DATA_DIRECTORY / "preprocessed"
 

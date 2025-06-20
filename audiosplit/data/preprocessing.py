@@ -17,6 +17,7 @@ from rich.progress import (
 from rich.prompt import Confirm
 
 from audiosplit.config.environment import DATA_DIRECTORY, NUMBER_OF_THREADS
+from audiosplit.data.multitrack import Multitrack
 
 
 def midi_to_wav_converter(midi_file: Path, wav_file: Path, sample_rate=44100):
@@ -32,14 +33,21 @@ def midi_to_wav_converter(midi_file: Path, wav_file: Path, sample_rate=44100):
     """
     try:
         midi_data = pretty_midi.PrettyMIDI(str(midi_file.absolute()))
-        audio = midi_data.synthesize(fs=sample_rate)
+        multitrack_audio: Multitrack = Multitrack.from_midi(midi_data, midi_file.stem)
+        audio = multitrack_audio.music
 
         if len(audio) == 0:
-            print("❌​ Warning: {midi_file} generated empty audio")
+            print(f"❌​ Warning: {midi_file} generated empty audio")
             return False
 
         sf.write(file=str(wav_file.absolute()), data=audio, samplerate=sample_rate)
-        return True
+
+        multitrack_directory_location = wav_file.absolute().parent
+        multitrack_output_path: Path = multitrack_audio.save(
+            multitrack_directory_location
+        )
+
+        return multitrack_output_path.exists()
 
     except Exception as e:
         print(f"​❌​ Error while converting {midi_file}: {e}")

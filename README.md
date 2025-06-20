@@ -4,7 +4,7 @@ _<h4 align="center">Extract indivudal instruments from an audio file.</h4>_
 
 Most important points of this project's structure :
 - Using [pyproject.toml](pyproject.toml) instead of requirements.txt
-- Splitting package into smaller modules (see [project's documentation](/documentation/README.md))
+- Splitting package into smaller modules (see [project's documentation](/documentation/project_architecture.md))
 - Training [models into sub apps](/apps/models/README.md)
 - [Custom audiosplit cli](/audiosplit/cli/README.md) for easier workflow
 - Extensive [.gitignore](.gitignore)
@@ -14,6 +14,7 @@ Most important points of this project's structure :
 ## Summary
 
 - [Summary](#summary)
+- [Project related documentation](#project-related-documentation)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Setup](#setup)
@@ -23,6 +24,11 @@ Most important points of this project's structure :
   - [Apps](#apps)
   - [Overall architecture](#overall-architecture)
 - [Raising issues](#raising-issues)
+- [Music identified](#music-identified)
+
+## Project related documentation
+
+You can look at [this documentation section](/documentation/README.md) to learn more about the project content, research, etc...
 
 ## Getting Started
 
@@ -167,3 +173,8 @@ ds_project_template/
 ## Raising issues
 
 If you find issues or misleading informations, feel free to raise an issue.
+
+## Music identified
+
+- [Nocturne in B-Flat Minor, Op. 9, No. 1, Frédéric Chopin](data/preprocessed/b561532504c541065a4a4e68b034f084.wav)
+- [Image (sort of), John Lennon](data/preprocessed/f757f350f87b72b586f8ea7d17084fcd.wav)
