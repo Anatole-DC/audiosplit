@@ -10,7 +10,7 @@ We are using [colin reffel's Lakh MIDI dataset][dataset-website], which contains
 
 To pre-process the data, we extract it using [pretty-midi][pretty-midi] and [soundfile][soundfile]. We extract individual instrument tracks for the training process.
 
-When converting the data we are creating a multitrack file, which is just a pickle file, containing all the individual audio tracks. We use this method for storage convenience, as it will be easier to retrieve all the audio this way.
+When converting the data we are creating a [multitrack file](/audiosplit/data/multitrack.py), which is just a pickle file, containing all the individual audio tracks. We use this method for storage convenience, as it will be easier to retrieve all the audio this way.
 
 Each individual instrument track is stored under the following name.
 

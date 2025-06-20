@@ -39,7 +39,9 @@ def load_midi_music_paths(number_of_samples: int = None) -> List[Path]:
 
     midi_file_paths: List[Path] = []
     for directory_path, _, filenames in RAW_DATA_DIRECTORY.walk():
-        midi_file_paths.extend([directory_path / file for file in filenames if file.endswith(".mid")])
+        midi_file_paths.extend(
+            [directory_path / file for file in filenames if file.endswith(".mid")]
+        )
 
     if number_of_samples is None:
         return midi_file_paths
