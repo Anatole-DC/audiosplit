@@ -37,6 +37,14 @@ def load_midi_music_paths(number_of_samples: int = None) -> List[Path]:
         RAW_DATA_DIRECTORY.is_dir()
     ), f"Raw directory path exists but is not a directory. Value given is {RAW_DATA_DIRECTORY.absolute()}"
 
+    midi_file_paths: List[Path] = []
+    for directory_path, _, filenames in RAW_DATA_DIRECTORY.walk():
+        midi_file_paths.extend([directory_path / file for file in filenames if file.endswith(".mid")])
+
+    if number_of_samples is None:
+        return midi_file_paths
+    return sample(midi_file_paths, number_of_samples)
+
 
 if __name__ == "__main__":
-    print(load_preprocessed_music_paths(5))
+    midi_files = load_midi_music_paths(5)
