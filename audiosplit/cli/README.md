@@ -18,9 +18,17 @@ Audiosplit's diagnostic
 
 ### Data
 
-All commands related to :
-- Dataset download
-- Data pre-processing
+To download the data :
+
+```bash
+asplit data download
+```
+
+To convert MIDI files to train data :
+
+```bash
+asplit data convert
+```
 
 ## Contribute
 
