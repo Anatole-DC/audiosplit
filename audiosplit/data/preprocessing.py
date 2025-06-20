@@ -32,7 +32,7 @@ def midi_to_wav_converter(midi_file: Path, wav_file: Path, sample_rate=44100):
     """
     try:
         midi_data = pretty_midi.PrettyMIDI(str(midi_file.absolute()))
-        audio = midi_data.synthesize(fs=sample_rate)
+        audio = midi_data.fluidsynth(fs=sample_rate)
 
         if len(audio) == 0:
             print("❌​ Warning: {midi_file} generated empty audio")
