@@ -1,0 +1,42 @@
+{
+  "name": "multitrack_audio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@wavesurfer/react": "^1.0.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "streamlit-component-lib": "^2.0.0",
+    "wavesurfer-multitrack": "^0.4.12",
+    "wavesurfer.js": "^7.9.5"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": ".",
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6"
+  }
+}
